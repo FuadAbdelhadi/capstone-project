@@ -8,7 +8,7 @@ const routes: Routes = [
 {path: '', component:LandingPageComponent, pathMatch:"full"},
 {path:'landing-page', component: LandingPageComponent},
 {path: 'request', component:RequestComponent},
-{path: 'start-uo-info', component:StartUpInfoComponent},];
+{path: 'start-up-info', component:StartUpInfoComponent},];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

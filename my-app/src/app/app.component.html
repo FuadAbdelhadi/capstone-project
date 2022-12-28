@@ -1,2 +1,35 @@
+
+    <div #content>
+    <mat-toolbar class="header" color="primary">
+        <span (click)="backtohome()" routerLink="landing-page" #headName>Jo Start Up's</span>
+      <button class="menue" mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/request">request a start Up</button>
+        <button mat-menu-item routerLink="/landing-page" >Home</button>
+
+      </mat-menu>
+    </mat-toolbar>
+    
+
+
+
 <router-outlet></router-outlet>
-<app-landing-page></app-landing-page>
+
+
+<footer class="footer">
+   
+    <div #content>
+        <mat-toolbar class="header" color="primary">
+            <span (click)="backtohome()" routerLink="landing-page" #headName>Jo Start Up's</span>
+          
+          
+          
+             <!-- <button   (click)="share()" class="material-icons">share</button> -->
+             <!-- <button (click)="makePDF()" class="material-icons">download</button> -->
+    
+          
+        </mat-toolbar>
+    </div>
+  </footer>

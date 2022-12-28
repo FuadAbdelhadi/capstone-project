@@ -1,1 +1,78 @@
-<p>request works!</p>
+
+<div class="container">
+<form [formGroup]="form" >
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name">
+        <mat-error *ngIf="name?.hasError('required')"> Name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>logo URL</mat-label>
+        <input matInput type="text" formControlName="logo">
+        <mat-error *ngIf="logo?.hasError('required')"> URL is required</mat-error>
+    </mat-form-field>
+    
+
+    <mat-form-field>
+        <mat-label>Discription</mat-label>
+        <input matInput type="text" formControlName="Discription">
+        <mat-error *ngIf="Discription?.hasError('required')">A discription is required</mat-error>       
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>City name</mat-label>
+        <input matInput type="text" formControlName="City">
+        <mat-error *ngIf="City?.hasError('required')"> City name is required</mat-error>
+    </mat-form-field>
+
+    <!-- <mat-form-field appearance="fill">
+        <mat-label>Favorite food</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let food of foods" [value]="food.value">
+            {{food.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> -->
+
+
+      <!-- revisit when you add a service -->
+    <mat-form-field>
+        <mat-label>Sectors</mat-label>
+        <input matInput type="text" formControlName="Sectors">
+        <mat-error *ngIf="Sectors?.hasError('required')"> name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Founder Name</mat-label>
+        <input matInput type="text" formControlName="Founder">
+        <mat-error *ngIf="Founder?.hasError('required')"> Founder name is required</mat-error>
+    </mat-form-field>
+
+    <!-- <mat-form-field>
+        <mat-label>Starting year</mat-label>
+        <input matInput type="date" formControlName="year">
+        <mat-error *ngIf="Year?.hasError('required')"> Starting year is required</mat-error>
+    </mat-form-field> -->
+
+    <mat-form-field>
+        <mat-label>Number of employees</mat-label>
+        <input matInput type="number" formControlName="employees">
+        <mat-error *ngIf="employees?.hasError('required')"> Employees Number is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>URL</mat-label>
+        <input matInput type="text" formControlName="URL">
+        <mat-error *ngIf="URL?.hasError('required')"> URL is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>e-mail</mat-label>
+        <input matInput type="text" formControlName="email">
+        <mat-error *ngIf="email?.hasError('required')"> e-mail is required</mat-error>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">submit</button>
+</form>
+</div>
+

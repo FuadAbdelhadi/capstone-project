@@ -8,9 +8,10 @@ import { startup } from '../startups';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
-  image1: string;
-  
-   
+  constructor(private router: Router) {
+    //image location
+    this.image1 = "src\assets\images\image1.jpg"
+  }
   @ViewChild('content', {static:false}) el!: ElementRef;
   startups:startup[]=[{
     id: 1,
@@ -25,6 +26,18 @@ export class LandingPageComponent implements OnInit {
     url: "https://github.com/FuadAbdelhadi",
     email:"fuadrabdelhadi@gmail.com"
   } ,];
+  image1: string;
+
+   
+ 
+  
+  navitoinfo(){
+    this.router.navigate(['/start-up-info'])
+  }
+
+
+
+
   // makePDF(){
   //   let pdf = new jsPDF('p','pt', 'a4');
   //   pdf.html(this.el.nativeElement,{
@@ -35,11 +48,7 @@ export class LandingPageComponent implements OnInit {
   // }
   
   
-  constructor(private router: Router) {
-    //image location
-    this.image1 = "src\assets\images\image1.jpg"
-    
-  }
+  
   
   ngOnInit() {
   }
@@ -66,3 +75,5 @@ export class LandingPageComponent implements OnInit {
 //     }
 //   }
 // }
+
+

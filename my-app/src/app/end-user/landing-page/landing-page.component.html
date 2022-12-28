@@ -1,34 +1,22 @@
-<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 
 
-<p>fuck off</p>
-<div>
-<div #content>
-<mat-toolbar class="header" color="primary">
-  <span>Jo Start Up's</span>
-  <button class="menue" mat-button [matMenuTriggerFor]="menu">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/request">request a start Up</button>
-  </mat-menu>
-</mat-toolbar>
+
 
 
 
 <div class="container">
-  <p>fuck off2</p>
   <section class="firstSection">
     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque ea odio pariatur perspiciatis repellendus neque accusamus, deserunt sequi nesciunt consequatur hic recusandae doloremque itaque aliquid laboriosam. Impedit nostrum optio provident voluptatum dolorum, amet possimus porro eaque dolor quia, odio natus. Sint, in perferendis officia neque placeat maiores nesciunt est rem fugit vitae architecto, a molestias ullam, ipsum provident possimus! Cupiditate asperiores soluta adipisci consectetur illum quas alias maiores impedit doloribus libero. Molestiae fugiat nemo provident magnam rem asperiores, officia esse recusandae est sed. Consectetur suscipit praesentium eligendi aliquid vero quidem, aperiam iure odio, quasi nulla maxime at mollitia accusantium laboriosam!</p>
   </section>
   
-    <img src="src\assets\image1.jpg" 
+    <img src="assets\images\image2.jpg" 
     alt="Photo by Christina @ wocintechchat.com on Unsplash">
   
 </div>
 <div   class="card-container">
-  <div  *ngFor="let startup of startups ; let i = index" class="card-container" >
+  <div  *ngFor="let startup of startups ; let i = index" class="card-container"(click)="navitoinfo()" >
     
     <mat-card class="example-card"  >
       <mat-card-header>
@@ -50,5 +38,4 @@
 </footer>
 
 
-</div>
-</div>
+

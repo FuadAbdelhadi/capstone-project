@@ -1,0 +1,14 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+}
+.header > span{
+    font-size: xx-large;
+    cursor: pointer;
+}
+
+.menue{
+    border-radius: 50%;
+    scale: 150%;
+}
