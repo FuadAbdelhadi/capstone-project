@@ -16,7 +16,7 @@ export class LandingPageComponent implements OnInit {
   startups:startup[]=[{
     id: 1,
     name: "fuad",
-    logo: '',
+    logo: 'https://www.generatormix.com/images/logo/batman.jpg',
     discription:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus commodi, quasi, ea ipsam placeat dicta harum laboriosam provident ducimus, magnam tempora fugit vero omnis qui? Vel voluptatibus minima rerum consectetur.",
     city: "irbid",
     sectors: "aoutomotive",

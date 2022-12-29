@@ -34,6 +34,7 @@ img{
   }
   .example-card > img{
     max-width: 250px;
+    min-width: 250px;
   }
 .example-card:hover{
     transform: scale(105%);

@@ -3,9 +3,9 @@
     justify-content: space-between;
     height: 100px;
 }
-.header > span{
+span{
     font-size: xx-large;
-    cursor:default;
+    cursor:pointer;
 }
 
 .menue{
