@@ -1,0 +1,17 @@
+import {ValidatorFn} from "@angular/forms"
+
+
+export const passWordMatchingValidator :ValidatorFn = (control) => {
+
+    const password = control.get('password')?.value;
+    const confirm = control.get('confirmPassword')?.value;
+
+    if (password && confirm && password !== confirm){
+        return{
+            passwordDoesntMatch :true
+        }
+
+    }
+    return null
+
+}

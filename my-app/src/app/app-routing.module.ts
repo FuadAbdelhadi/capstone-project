@@ -10,7 +10,8 @@ const routes: Routes = [
 {path:'landing-page', component: LandingPageComponent},
 {path: 'request', component:RequestComponent},
 {path: 'start-up-info', component:StartUpInfoComponent},
-{path:'admin-page', component:AdminPageComponent}];
+{path:'admin-page', component:AdminPageComponent},
+{path:'auth', loadChildren: ()=> import('./auth/auth.module').then((m)=> m.AuthModule)}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

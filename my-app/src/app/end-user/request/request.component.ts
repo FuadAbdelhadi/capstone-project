@@ -15,9 +15,9 @@ form= new FormGroup({
   Sectors: new FormControl('', [Validators.required]),
   Founder: new FormControl('', [Validators.required]),
   Year: new FormControl('', [Validators.required]),
-  employees: new FormControl('', [Validators.required]),
+  employees: new FormControl('', [Validators.required, Validators.min(0)]),
   URL: new FormControl('', [Validators.required]),
-  email: new FormControl('', [Validators.required])
+  email: new FormControl('', [Validators.required, Validators.email])
 })
 get name(){
   return this.form.get("name")
@@ -50,5 +50,9 @@ get email(){
   return this.form.get("email")
 }
 
+
+submit(){
+  
+}
 
 }

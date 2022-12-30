@@ -20,6 +20,13 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSelectModule} from '@angular/material/select';
 import { AdminPageComponent } from './admin/admin-page/admin-page.component';
 import {MatTableModule} from '@angular/material/table';
+import{AngularFireModule} from '@angular/fire/compat';
+import{AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import { enviroments } from 'src/enviroments/enviroments';
+import {AngularFireAuthModule} from '@angular/fire/compat/auth';
+import { AuthModule } from './auth/auth.module';
+import { AuthRoutingModule } from './auth/auth-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +55,12 @@ import {MatTableModule} from '@angular/material/table';
     MatExpansionModule,
     MatSelectModule,
     MatTableModule,
-   
+    AngularFireModule.initializeApp(enviroments.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    
+    
+    
     
     
   ],
