@@ -24,8 +24,8 @@ import{AngularFireModule} from '@angular/fire/compat';
 import{AngularFirestoreModule} from '@angular/fire/compat/firestore';
 import { enviroments } from 'src/enviroments/enviroments';
 import {AngularFireAuthModule} from '@angular/fire/compat/auth';
-import { AuthModule } from './auth/auth.module';
-import { AuthRoutingModule } from './auth/auth-routing.module';
+import { UsersListComponent } from './admin/users-list/users-list.component';
+
 
 
 @NgModule({
@@ -35,7 +35,8 @@ import { AuthRoutingModule } from './auth/auth-routing.module';
     RequestComponent,
     StartUpInfoComponent,
     RequestComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,

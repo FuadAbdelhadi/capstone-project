@@ -23,7 +23,7 @@ export class LoginComponent {
       this.email?.value+'',
       this.password?.value+''
     ).then(()=> this.router.navigate(['/landing-page']))
-    .catch(()=> alert('The email or password you entered is incorrect'))
+    .catch((error)=>console.log(error))
 
   }
 

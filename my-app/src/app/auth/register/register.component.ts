@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
   form= new FormGroup({
+    name : new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     confirmPassword : new FormControl('', [Validators.required, Validators.minLength(8)])
@@ -20,12 +21,16 @@ export class RegisterComponent {
   submit(){
 
     this.auth.signup(
+      this.name?.value+'' ,
       this.email?.value+'',
       this.password?.value+''
     ).then((user)=> {this.router.navigate(['/landing-page'])
   console.log(user)})
     
 
+  }
+  get name(){
+    return this.form.get("name")
   }
 
   get email(){
