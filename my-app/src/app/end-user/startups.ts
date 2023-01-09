@@ -1,5 +1,5 @@
 export interface startup {
-    id: number,
+   approved:boolean,
     name: string,
     logo: string,
     discription:string,
@@ -7,7 +7,7 @@ export interface startup {
     sectors: string,
     founderName: string,
     year: string,
-    empNum: number,
+    empNum: string,
     url: string,
     email: string
 }

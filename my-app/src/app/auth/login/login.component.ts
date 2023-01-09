@@ -31,7 +31,7 @@ export class LoginComponent {
     return this.form.get("email")
   }
   get password(){
-    return this.form.get("passowrd")
+    return this.form.get("password")
   }
  
 

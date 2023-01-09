@@ -11,9 +11,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
-import { AppRoutingModule } from 'src/app/app-routing.module';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTabsModule} from '@angular/material/tabs';
+
 
 
 
@@ -21,18 +23,20 @@ const material = [
 
     MatToolbarModule,
     MatIconModule,
-
     MatButtonModule,
     MatMenuModule,
     MatCardModule,
     FormsModule,
-
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
     MatExpansionModule,
     MatSelectModule,
     MatTableModule,
+    MatSidenavModule,
+    MatDividerModule,
+    MatPaginatorModule,
+    MatTabsModule
 ]
 
 @NgModule({

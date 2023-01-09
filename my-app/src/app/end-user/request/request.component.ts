@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators, } from '@angular/forms';
+import { DataService } from 'src/app/admin/services/data.service';
 
 @Component({
   selector: 'app-request',
@@ -19,6 +20,11 @@ form= new FormGroup({
   URL: new FormControl('', [Validators.required]),
   email: new FormControl('', [Validators.required, Validators.email])
 })
+
+constructor(private data:DataService){}
+
+
+
 get name(){
   return this.form.get("name")
 }
@@ -49,10 +55,24 @@ get URL(){
 get email(){
   return this.form.get("email")
 }
+ approved = false
 
 
 submit(){
-  
+  this.data.addData(
+    this.approved,
+    this.name?.value+'',
+    this.logo?.value+'',
+    this.Discription?.value+'',
+    this.City?.value+'',
+    this.Sectors?.value+'',
+    this.Founder?.value+'',
+    this.Year?.value+'',
+    this.employees?.value+'',
+    this.URL?.value+'',
+    this.email?.value+'' ,
+
+  )
 }
 
 }

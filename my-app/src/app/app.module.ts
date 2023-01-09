@@ -25,6 +25,7 @@ import{AngularFirestoreModule} from '@angular/fire/compat/firestore';
 import { enviroments } from 'src/enviroments/enviroments';
 import {AngularFireAuthModule} from '@angular/fire/compat/auth';
 import { UsersListComponent } from './admin/users-list/users-list.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -59,6 +60,7 @@ import { UsersListComponent } from './admin/users-list/users-list.component';
     AngularFireModule.initializeApp(enviroments.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    MatTabsModule
     
     
     

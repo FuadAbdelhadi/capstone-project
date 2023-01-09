@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/admin/services/data.service';
 import { startup } from '../startups';
 
 @Component({
@@ -8,28 +9,22 @@ import { startup } from '../startups';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
-  constructor(private router: Router) {
+  constructor(private router: Router,private data: DataService) {
     //image location
     this.image1 = "src\assets\images\image1.jpg"
   }
   @ViewChild('content', {static:false}) el!: ElementRef;
-  startups:startup[]=[{
-    id: 1,
-    name: "fuad",
-    logo: 'https://www.generatormix.com/images/logo/batman.jpg',
-    discription:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus commodi, quasi, ea ipsam placeat dicta harum laboriosam provident ducimus, magnam tempora fugit vero omnis qui? Vel voluptatibus minima rerum consectetur.",
-    city: "irbid",
-    sectors: "aoutomotive",
-    founderName: "rajeh",
-    year: "1999",
-    empNum: 2500,
-    url: "https://github.com/FuadAbdelhadi",
-    email:"fuadrabdelhadi@gmail.com"
-  } ,];
+  startups:startup[]=[];
   image1: string;
-
-   
- 
+  
+  
+  ngOnInit() {
+  
+    this.data.getData().subscribe((value)=>{
+      this.startups = value
+    })
+  }
+  
   
   navitoinfo(){
     this.router.navigate(['/start-up-info'])
@@ -50,8 +45,6 @@ export class LandingPageComponent implements OnInit {
   
   
   
-  ngOnInit() {
-  }
 
   // this.CompService.navitoinfo(id:number){
   //   this.startups.forEach(value =>{
@@ -59,6 +52,8 @@ export class LandingPageComponent implements OnInit {
   //       this.router.navigate(['/start-uo-info/'+value])
   //     }
   //   })
+
+  
     
   }
 

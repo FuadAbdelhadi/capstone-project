@@ -21,3 +21,8 @@ button{
 form > mat-error{
     text-align: center;
 }
+.signup{
+    margin-top: 20px;
+    text-align: center;
+    font-size: large;
+}

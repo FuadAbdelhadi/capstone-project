@@ -2,16 +2,23 @@
     <div #content>
     <mat-toolbar class="header" color="primary">
         <span class="home" (click)="backtohome()" routerLink="landing-page" #headName>Jo Start Up's</span>
-      <button class="menue" mat-button [matMenuTriggerFor]="menu">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item routerLink="/request">request a start Up</button>
-        <button mat-menu-item routerLink="/landing-page" >Home</button>
-
-      </mat-menu>
+        <div class="right-side">
+        <button  routerLink="/auth/login" class="button-49" >login</button>
+        <button (click)="logout()">Logout</button>
+        <button class="menue" mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button  mat-menu-item routerLink="/request">request a start Up</button>
+          <button mat-menu-item routerLink="/landing-page" >Home</button>
+          
+          <button *ngIf="admin" mat-menu-item routerLink="/admin-page" >admin page</button>
+          <button *ngIf="admin"  mat-menu-item routerLink="/users-list" >users list</button>
+          
+        </mat-menu>
+      </div>
     </mat-toolbar>
-    
+  
 
 
 

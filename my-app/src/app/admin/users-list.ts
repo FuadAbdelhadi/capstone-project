@@ -1,5 +1,6 @@
 export interface users{
-    name:string,
     id?:string,
+    name?:string,
+    email:string,
     admin?:boolean
 }

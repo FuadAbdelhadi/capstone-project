@@ -22,7 +22,7 @@
 .container{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 250px;
+    margin-bottom: 100px;
     background-color: antiquewhite;
 }
 img{
@@ -34,7 +34,7 @@ img{
   }
   .example-card > img{
     max-width: 250px;
-    min-width: 100px;
+    min-width: 250px;
     
   }
 .example-card:hover{
@@ -53,7 +53,6 @@ img{
  }
  .card-container{
   display: flex;
-  
   flex-wrap: wrap;
 
  }

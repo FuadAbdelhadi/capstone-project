@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators, } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { passWordMatchingValidator } from '../validators/passwordMatchingValidator';
 import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { users } from 'src/app/admin/users-list';
 
 @Component({
   selector: 'app-register',
@@ -16,16 +18,18 @@ export class RegisterComponent {
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     confirmPassword : new FormControl('', [Validators.required, Validators.minLength(8)])
   }, {validators: [passWordMatchingValidator]})
-  constructor(private auth:AuthService, private router:Router){}
+  constructor(private auth:AuthService, private router:Router, private fs:AngularFirestore){}
 
   submit(){
 
     this.auth.signup(
-      this.name?.value+'' ,
       this.email?.value+'',
-      this.password?.value+''
-    ).then((user)=> {this.router.navigate(['/landing-page'])
-  console.log(user)})
+      this.password?.value+'',
+      this.name?.value+'' ,
+      
+    ).then(()=> {this.router.navigate(['/landing-page'])
+    // this.fs.collection<users>('users').doc(val.user?.admin).set(user)
+  })
     
 
   }
@@ -37,7 +41,7 @@ export class RegisterComponent {
     return this.form.get("email")
   }
   get password(){
-    return this.form.get("passowrd")
+    return this.form.get("password")
   }
   get confirmPassword(){
     return this.form.get("confirmPassword")

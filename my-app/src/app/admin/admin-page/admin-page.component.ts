@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { startup } from 'src/app/end-user/startups';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { DataService } from '../services/data.service';
+import { Observable, Observer } from 'rxjs';
 
 @Component({
   selector: 'app-admin-page',
@@ -14,13 +18,26 @@ import { startup } from 'src/app/end-user/startups';
     ]),
   ],
 })
-export class AdminPageComponent {
+export class AdminPageComponent implements OnInit{
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   searchText:any=''
-  dataSource = ELEMENT_DATA;
-  columnsToDisplay = ['name','logo','sectors'];
+  dataSource = new MatTableDataSource<startup>([]);
+  columnsToDisplay = ['name','logo','sectors', 'approved'];
   displayedColumns=['Name','City','Sector','year','empNum','url','email','discription'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement: startup | null | undefined;
+  
+
+  constructor( private data:DataService ) { 
+    
+  }
+  
+  ngOnInit(): void {
+    this.data.getData().subscribe((value)=>{
+      this.dataSource.data = value
+    })
+  }
+
 
   // applyFilter(event: Event) {
   //   const filterValue:startup['sectores'] = (event.target as HTMLInputElement).value;
@@ -31,17 +48,8 @@ export class AdminPageComponent {
   //   }
   // }
 
+
+  
+
+
 }
-const ELEMENT_DATA:startup[]=[{
-  id: 1,
-  name: "fuad",
-  logo: 'https://www.generatormix.com/images/logo/batman.jpg',
-  discription:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus commodi, quasi, ea ipsam placeat dicta harum laboriosam provident ducimus, magnam tempora fugit vero omnis qui? Vel voluptatibus minima rerum consectetur.",
-  city: "irbid",
-  sectors: "aoutomotive",
-  founderName: "rajeh",
-  year: "1999",
-  empNum: 2500,
-  url: "https://github.com/FuadAbdelhadi",
-  email:"fuadrabdelhadi@gmail.com"
-}]
