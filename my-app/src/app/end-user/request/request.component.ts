@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, } from '@angular/forms';
 import { DataService } from 'src/app/admin/services/data.service';
+import { sector } from '../startups';
 
 @Component({
   selector: 'app-request',
   templateUrl: './request.component.html',
   styleUrls: ['./request.component.css']
 })
-export class RequestComponent {
+export class RequestComponent implements OnInit{
 form= new FormGroup({
   name: new FormControl('', [Validators.required]),
   logo: new FormControl('', [Validators.required]),
@@ -20,8 +21,14 @@ form= new FormGroup({
   URL: new FormControl('', [Validators.required]),
   email: new FormControl('', [Validators.required, Validators.email])
 })
+sectorsFilter? : sector[]
 
 constructor(private data:DataService){}
+  ngOnInit(): void {
+    this.data.getSectors().subscribe((value)=>{
+      this.sectorsFilter = value
+      console.log(value)
+  })}
 
 
 
@@ -74,5 +81,7 @@ submit(){
 
   )
 }
+
+
 
 }

@@ -11,3 +11,8 @@ export interface startup {
     url: string,
     email: string
 }
+
+
+export interface sector {
+    name:string
+}

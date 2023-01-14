@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, switchMap } from 'rxjs';
 import { DataService } from 'src/app/admin/services/data.service';
-import { startup } from '../startups';
+import { sector, startup } from '../startups';
 
 @Component({
   selector: 'app-landing-page',
@@ -9,25 +11,56 @@ import { startup } from '../startups';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
-  constructor(private router: Router,private data: DataService) {
+  constructor(private router: Router,private data: DataService, private route:ActivatedRoute) {
     //image location
     this.image1 = "src\assets\images\image1.jpg"
   }
   @ViewChild('content', {static:false}) el!: ElementRef;
-  startups:startup[]=[];
+  startup:startup[]=[];
+  startup$!: Observable<startup | undefined | unknown>;
+  id!:string
   image1: string;
+  sectorsFilter? : sector[]
+  form = new FormGroup ({
+    sectors: new FormControl('')
+  })
   
   
   ngOnInit() {
+
+    this.data.getSectors().subscribe((value)=>{
+      this.sectorsFilter = value
+      
+  })
   
-    this.data.getData().subscribe((value)=>{
-      this.startups = value
+    this.data.getData(true).subscribe((value)=>{
+      this.startup = value
     })
   }
+
+  filter(){
+   
+    console.log(this.data.getSectorByName(this.sectors+''))
+   return this.data.getSectorByName(this.sectors+'')
+  }
   
+  get sectors(){
+    return this.form.get("sectors")
+  }
   
   navitoinfo(){
-    this.router.navigate(['/start-up-info'])
+
+    this.startup$ = this.route.paramMap.pipe(
+      switchMap((value)=>{
+        this.id = value.get('id')+''
+        return this.data.getDataById(this.id)
+      })
+    )
+
+
+
+
+    this.router.navigate(['/start-up-info', this.id])
   }
 
 

@@ -50,6 +50,7 @@ export class UsersListComponent implements  AfterViewInit {
   }
 
   toggleAdmin(admin:users){
+    console.log(admin);
     admin.admin = !admin.admin
     
     this.UserService.toggleAdmin(admin?.id+ '', admin)

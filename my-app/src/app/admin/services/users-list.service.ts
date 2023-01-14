@@ -27,7 +27,7 @@ export class UsersListService {
 
     return this.fireStore
     .collection<users>
-    ('users').valueChanges(); //server-side filter 
+    ('users').valueChanges(); 
 }
 getUserById(id: string){
   return this.fireStore

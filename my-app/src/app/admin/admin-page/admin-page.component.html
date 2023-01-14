@@ -10,7 +10,7 @@
   <mat-tab >
     <ng-template mat-tab-label>new requests</ng-template>
     <table mat-table
-       [dataSource]="dataSource" multiTemplateDataRows
+       [dataSource]="dataSourceNotApproved" multiTemplateDataRows
        class="mat-elevation-z8">
   <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay ">
     <th mat-header-cell *matHeaderCellDef> {{column}} </th>
@@ -39,7 +39,7 @@
 
 
 
-           <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+           <table mat-table [dataSource]="[element]" class="mat-elevation-z8">
 
             <!--- Note that these columns can be defined in any order.
                   The actual rendered columns are set as a property on the row definition" -->
@@ -113,7 +113,7 @@
   <mat-tab >
     <ng-template mat-tab-label>Approved</ng-template>
     <table mat-table
-       [dataSource]="dataSource" multiTemplateDataRows
+       [dataSource]="dataSourceApproved" multiTemplateDataRows
        class="mat-elevation-z8">
   <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay ">
     <th mat-header-cell *matHeaderCellDef> {{column}} </th>
@@ -142,7 +142,7 @@
 
 
 
-           <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+           <table mat-table [dataSource]="[element]" class="mat-elevation-z8">
 
             <!--- Note that these columns can be defined in any order.
                   The actual rendered columns are set as a property on the row definition" -->
@@ -189,6 +189,11 @@
               <ng-container matColumnDef="email">
                 <th mat-header-cell *matHeaderCellDef> email </th>
                 <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="discription">
+                <th mat-header-cell *matHeaderCellDef> discription </th>
+                <td mat-cell *matCellDef="let element"> {{element.discription}} </td>
               </ng-container>
 
               <ng-container matColumnDef="discription">

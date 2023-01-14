@@ -8,15 +8,32 @@
 
 <div class="container">
   <section class="firstSection">
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque ea odio pariatur perspiciatis repellendus neque accusamus, deserunt sequi nesciunt consequatur hic recusandae doloremque itaque aliquid laboriosam. Impedit nostrum optio provident voluptatum dolorum, amet possimus porro eaque dolor quia, odio natus. Sint, in perferendis officia neque placeat maiores nesciunt est rem fugit vitae architecto, a molestias ullam, ipsum provident possimus! Cupiditate asperiores soluta adipisci consectetur illum quas alias maiores impedit doloribus libero. Molestiae fugiat nemo provident magnam rem asperiores, officia esse recusandae est sed. Consectetur suscipit praesentium eligendi aliquid vero quidem, aperiam iure odio, quasi nulla maxime at mollitia accusantium laboriosam!</p>
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing.</h1>
+    <br>
+    <p >
+      One morning, when gregor samsa woke from troubled dreams, he foound
+      himself transformed in his bed into a horrible vermin.
+    </p>
+    <p >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto suscipit voluptatem cupiditate, magni sint expedita illum ab quas soluta a quibusdam ad tenetur et dolorum?</p>
+    <br>
+    <!-- <input type="button" onClick="document.getElementById('cards').scrollIntoView();" /> -->
   </section>
-  
-    <img src="assets\images\image2.jpg" 
-    alt="Photo by Christina @ wocintechchat.com on Unsplash">
-  
 </div>
-<div   class="card-container">
-  <div  *ngFor="let startup of startups ; let i = index" class="card-container"(click)="navitoinfo()" >
+<div class="filter">
+  <form [formGroup]="form" (ngSubmit)="filter()">
+  <mat-form-field  >
+    <mat-label>Sector</mat-label>
+    <mat-select  formControlName="sectors">
+      <mat-option *ngFor="let sector of sectorsFilter" >
+        {{sector.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button type="submit" class="filterbtn">Filter</button>
+</form>
+</div>
+<div #cards  class="card-container">
+  <div  *ngFor="let startup of startup ; let i = index" class="card-container"(click)="navitoinfo()" >
     
     <mat-card class="example-card"  >
       <mat-card-header>

@@ -26,22 +26,22 @@
         <mat-error *ngIf="City?.hasError('required')"> City name is required</mat-error>
     </mat-form-field>
 
-    <!-- <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" >
         <mat-label>Favorite food</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let food of foods" [value]="food.value">
-            {{food.viewValue}}
+        <mat-select matInput formControlName="Sectors">
+          <mat-option *ngFor="let sector of sectorsFilter" >
+            {{sector.name}}
           </mat-option>
         </mat-select>
-      </mat-form-field> -->
+      </mat-form-field>
 
 
       <!-- revisit when you add a service -->
-    <mat-form-field>
+    <!-- <mat-form-field>
         <mat-label>Sectors</mat-label>
         <input matInput type="text" formControlName="Sectors">
         <mat-error *ngIf="Sectors?.hasError('required')"> name is required</mat-error>
-    </mat-form-field>
+    </mat-form-field> -->
 
     <mat-form-field>
         <mat-label>Founder Name</mat-label>

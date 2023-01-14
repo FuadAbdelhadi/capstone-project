@@ -10,7 +10,7 @@ const routes: Routes = [
 {path: '', component:LandingPageComponent, pathMatch:"full"},
 {path:'landing-page', component: LandingPageComponent},
 {path: 'request', component:RequestComponent},
-{path: 'start-up-info', component:StartUpInfoComponent},
+{path: 'start-up-info/:id', component:StartUpInfoComponent},
 {path:'admin-page', component:AdminPageComponent},
 {path:'auth', loadChildren: ()=> import('./auth/auth.module').then((m)=> m.AuthModule)},
 {path:'users-list', component:UsersListComponent}];

@@ -1,23 +1,27 @@
 
     <div #content>
-    <mat-toolbar class="header" color="primary">
+    <div class="header" color="primary">
         <span class="home" (click)="backtohome()" routerLink="landing-page" #headName>Jo Start Up's</span>
+        <div class="middle">
+          
+         
+        </div>
         <div class="right-side">
-        <button  routerLink="/auth/login" class="button-49" >login</button>
-        <button (click)="logout()">Logout</button>
-        <button class="menue" mat-button [matMenuTriggerFor]="menu">
+        <button  routerLink="/auth/login" class="log" *ngIf="!userstate$" >login</button>
+        <button class="log" (click)="logout()" *ngIf="userstate$">Logout</button>
+        <button class="midbutton"  routerLink="/request">request a start Up</button>
+        <button *ngIf="admin" class="menue" mat-button [matMenuTriggerFor]="menu" color="white">
           <mat-icon>menu</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button  mat-menu-item routerLink="/request">request a start Up</button>
-          <button mat-menu-item routerLink="/landing-page" >Home</button>
+          
           
           <button *ngIf="admin" mat-menu-item routerLink="/admin-page" >admin page</button>
           <button *ngIf="admin"  mat-menu-item routerLink="/users-list" >users list</button>
           
         </mat-menu>
       </div>
-    </mat-toolbar>
+    </div>
   
 
 
@@ -28,7 +32,7 @@
 <footer class="footer">
    
     <div #content>
-        <mat-toolbar class="header" color="primary">
+        <div class="header" >
             <span (click)="backtohome()" routerLink="landing-page" #headName>Jo Start Up's</span>
           
           
@@ -37,6 +41,6 @@
              <!-- <button (click)="makePDF()" class="material-icons">download</button> -->
     
           
-        </mat-toolbar>
+        </div>
     </div>
   </footer>

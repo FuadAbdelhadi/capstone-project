@@ -21,7 +21,8 @@ import { Observable, Observer } from 'rxjs';
 export class AdminPageComponent implements OnInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   searchText:any=''
-  dataSource = new MatTableDataSource<startup>([]);
+  dataSourceApproved = new MatTableDataSource<startup>([]);
+  dataSourceNotApproved = new MatTableDataSource<startup>([]);
   columnsToDisplay = ['name','logo','sectors', 'approved'];
   displayedColumns=['Name','City','Sector','year','empNum','url','email','discription'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
@@ -33,8 +34,11 @@ export class AdminPageComponent implements OnInit{
   }
   
   ngOnInit(): void {
-    this.data.getData().subscribe((value)=>{
-      this.dataSource.data = value
+    this.data.getData(true).subscribe((value)=>{
+      this.dataSourceApproved.data = value
+    })
+    this.data.getData(false).subscribe((value)=>{
+      this.dataSourceNotApproved.data = value
     })
   }
 
