@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, switchMap } from 'rxjs';
+import { filter, map, Observable, switchMap } from 'rxjs';
 import { DataService } from 'src/app/admin/services/data.service';
 import { sector, startup } from '../startups';
 
@@ -40,8 +40,13 @@ export class LandingPageComponent implements OnInit {
 
   filter(){
    
-    console.log(this.data.getSectorByName(this.sectors+''))
-   return this.data.getSectorByName(this.sectors+'')
+   this.data.getData(true).pipe(
+    map((startups : startup[])=>{
+      return startups.filter((startup)=> startup.sectors.indexOf(this.sectors?.value+ '') != -1)
+   })).subscribe((startups)=> {this.startup = startups});
+   
+
+   //you don't update data on filter 
   }
   
   get sectors(){

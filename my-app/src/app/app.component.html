@@ -7,8 +7,10 @@
          
         </div>
         <div class="right-side">
-        <button  routerLink="/auth/login" class="log" *ngIf="!userstate$" >login</button>
-        <button class="log" (click)="logout()" *ngIf="userstate$">Logout</button>
+        <button class="log" (click)="logout()" *ngIf="userstate$ | async as userState;else notLoggedIn">Logout</button>
+        <ng-template #notLoggedIn>
+          <button  routerLink="/auth/login" class="log">login</button>
+        </ng-template>
         <button class="midbutton"  routerLink="/request">request a start Up</button>
         <button *ngIf="admin" class="menue" mat-button [matMenuTriggerFor]="menu" color="white">
           <mat-icon>menu</mat-icon>
