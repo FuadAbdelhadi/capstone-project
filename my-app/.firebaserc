@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "start-ups-3e748"
+  },
+  "targets": {
+    "start-ups-3e748": {
+      "hosting": {
+        "my-app": [
+          "start-ups-3e748"
+        ]
+      }
+    }
   }
 }
