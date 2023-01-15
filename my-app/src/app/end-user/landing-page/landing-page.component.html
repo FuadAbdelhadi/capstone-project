@@ -24,6 +24,9 @@
   <mat-form-field  >
     <mat-label>Sector</mat-label>
     <mat-select  formControlName="sectors">
+      <mat-option [value]="all">
+        all
+      </mat-option>
       <mat-option [value]="sector.name" *ngFor="let sector of sectorsFilter" >
         {{sector.name}}
       </mat-option>

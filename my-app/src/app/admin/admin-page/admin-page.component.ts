@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataService } from '../services/data.service';
 import { Observable, Observer } from 'rxjs';
+import { approval } from '../approval';
 
 @Component({
   selector: 'app-admin-page',
@@ -23,7 +24,7 @@ export class AdminPageComponent implements OnInit{
   searchText:any=''
   dataSourceApproved = new MatTableDataSource<startup>([]);
   dataSourceNotApproved = new MatTableDataSource<startup>([]);
-  columnsToDisplay = ['name','logo','sectors', 'approved'];
+  columnsToDisplay = ['name','logo','sectors', 'approved', 'approve', 'delete'];
   displayedColumns=['Name','City','Sector','year','empNum','url','email','discription'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement: startup | null | undefined;
@@ -40,6 +41,15 @@ export class AdminPageComponent implements OnInit{
     this.data.getData(false).subscribe((value)=>{
       this.dataSourceNotApproved.data = value
     })
+  }
+
+  toggleApproval(approve:startup){
+    approve.approved= !approve.approved
+    this.data.toggleAproval(approve.name, approve)
+  }
+
+  delete(name:string){
+    this.data.Delete(name)
   }
 
 

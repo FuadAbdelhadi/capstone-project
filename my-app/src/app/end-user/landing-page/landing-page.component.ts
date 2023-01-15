@@ -24,6 +24,7 @@ export class LandingPageComponent implements OnInit {
   form = new FormGroup ({
     sectors: new FormControl('')
   })
+  all:string = 'all'
   
   
   ngOnInit() {
@@ -39,11 +40,21 @@ export class LandingPageComponent implements OnInit {
   }
 
   filter(){
-   
-   this.data.getData(true).pipe(
-    map((startups : startup[])=>{
-      return startups.filter((startup)=> startup.sectors.indexOf(this.sectors?.value+ '') != -1)
-   })).subscribe((startups)=> {this.startup = startups});
+    if(this.sectors?.value == this.all){
+      this.data.getData(true).subscribe((value)=>{
+        return this.startup = value
+      })
+
+    }else{
+      this.data.getData(true).pipe(
+       map((startups : startup[])=>{
+         return startups.filter((startup)=> startup.sectors.indexOf(this.sectors?.value+ '') != -1)
+      })).subscribe((startups)=> {this.startup = startups});
+    }
+
+  
+
+
    
 
    //you don't update data on filter 

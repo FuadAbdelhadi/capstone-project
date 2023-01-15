@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { sector, startup } from 'src/app/end-user/startups';
+import { approval } from '../approval';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,14 @@ export class DataService {
   getDataById(id:string){
     return this.fireStore.collection('users').doc(id).valueChanges()
   }
+
+  toggleAproval(name:string, update:startup){
+    return this.fireStore.collection<startup>('start-ups').doc(name).update({...update})
+  }
+
+  Delete(name:string){
+    this.fireStore.collection<startup>('users').doc<startup>(name).delete()
+ }
 
   addData(_approved:boolean, name:string, logo:string, Discription:string, City:string, Sectors:string, Founder:string, Year:string, employees:string, URL:string, email:string ){
     let comp:startup = {
