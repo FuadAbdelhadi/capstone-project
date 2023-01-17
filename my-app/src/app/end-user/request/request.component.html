@@ -72,7 +72,7 @@
         <input matInput type="text" formControlName="email">
         <mat-error *ngIf="email?.hasError('required')"> e-mail is required</mat-error>
     </mat-form-field>
-    <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid" (click)="naviToLandingPage()">submit</button>
+    <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">submit</button>
 </form>
 </div>
 

@@ -81,10 +81,9 @@ submit(){
     this.email?.value+'' ,
 
   )
-}
-
-naviToLandingPage(){
   this.router.navigate(['/landing-page'])
 }
+
+
 
 }
