@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataService } from 'src/app/admin/services/data.service';
 import { sector } from '../startups';
 
@@ -23,7 +24,7 @@ form= new FormGroup({
 })
 sectorsFilter? : sector[]
 
-constructor(private data:DataService){}
+constructor(private data:DataService, private router:Router){}
   ngOnInit(): void {
     this.data.getSectors().subscribe((value)=>{
       this.sectorsFilter = value
@@ -82,6 +83,8 @@ submit(){
   )
 }
 
-
+naviToLandingPage(){
+  this.router.navigate(['/landing-page'])
+}
 
 }
