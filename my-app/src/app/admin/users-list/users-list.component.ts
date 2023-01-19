@@ -40,9 +40,6 @@ export class UsersListComponent implements  AfterViewInit {
     
   this.UserService.getuser().subscribe((response)=> {
     if(response){
-
-      
-      //this.dataSource.data = response.filter((v)=> v.userId == ""); //client-side filter 
       this.dataSource.data = response;
     }
   })

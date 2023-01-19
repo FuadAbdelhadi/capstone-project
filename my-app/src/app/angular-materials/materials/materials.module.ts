@@ -15,6 +15,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatDialogModule, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
 
@@ -36,7 +37,9 @@ const material = [
     MatSidenavModule,
     MatDividerModule,
     MatPaginatorModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDialogModule,
+    
 ]
 
 @NgModule({

@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { filter, map, Observable, switchMap } from 'rxjs';
 import { DataService } from 'src/app/admin/services/data.service';
 import { sector, startup } from '../startups';
+import { MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { StartUpInfoComponent } from '../start-up-info/start-up-info.component';
 
 @Component({
   selector: 'app-landing-page',
@@ -11,12 +13,13 @@ import { sector, startup } from '../startups';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
-  constructor(private router: Router,private data: DataService, private route:ActivatedRoute) {
+  constructor(private router: Router,private data: DataService, private route:ActivatedRoute, public dialog: MatDialog) {
     //image location
     this.image1 = "src\assets\images\image1.jpg"
   }
   @ViewChild('content', {static:false}) el!: ElementRef;
   startup:startup[]=[];
+  startupByName!: Observable<startup[] | unknown>
   startup$!: Observable<startup | undefined | unknown>;
   id!:string
   image1: string;
@@ -25,6 +28,8 @@ export class LandingPageComponent implements OnInit {
     sectors: new FormControl('')
   })
   all:string = 'all'
+
+ 
   
   
   ngOnInit() {
@@ -77,6 +82,17 @@ export class LandingPageComponent implements OnInit {
 
 
     this.router.navigate(['/start-up-info', this.id])
+  }
+
+
+  openDialog(startup: startup) {
+  
+    this.dialog.open(StartUpInfoComponent, {
+      data: {
+        ... startup
+
+      },
+    });
   }
 
 

@@ -11,15 +11,17 @@ export class DataService {
   constructor(private fireStore: AngularFirestore) { }
 
   getData(isApproved: boolean){
-    return this.fireStore.collection<startup>('start-ups', ref=> ref.where('approved','==',isApproved)).valueChanges()
+    return this.fireStore.collection<startup>('start-ups', ref=> ref.where('approved','==',isApproved)).valueChanges({"idField":"id"})
   }
 
   getDataById(id:string){
     return this.fireStore.collection('users').doc(id).valueChanges()
   }
 
-  toggleAproval(name:string, update:startup){
-    return this.fireStore.collection<startup>('start-ups').doc(name).update({...update})
+  toggleAproval(id:string, update:startup){
+    console.log(id);
+    console.log(update);
+    return this.fireStore.collection<startup>('start-ups').doc(id).update({...update})
   }
 
   Delete(name:string){

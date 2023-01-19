@@ -45,7 +45,7 @@ export class AdminPageComponent implements OnInit{
 
   toggleApproval(approve:startup){
     approve.approved= !approve.approved
-    this.data.toggleAproval(approve.name, approve)
+    this.data.toggleAproval(approve.id+'', approve)
   }
 
   delete(name:string){

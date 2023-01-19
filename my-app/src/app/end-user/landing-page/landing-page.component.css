@@ -43,6 +43,7 @@
 
 .example-card {
     max-width: 250px;
+    height: 330px;
     display: flex;
     border-radius: 25px;
     box-shadow: -1px -1px 34px -3px rgba(0,0,0,0.85);    margin-left: 20px;

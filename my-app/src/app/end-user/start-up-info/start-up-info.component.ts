@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { startup } from '../startups';
 
 @Component({
   selector: 'app-start-up-info',
@@ -7,14 +9,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./start-up-info.component.css']
 })
 export class StartUpInfoComponent implements OnInit{
-  constructor(private router:Router, private route:ActivatedRoute){
-    
+  startup!: startup
+  constructor( @Inject(MAT_DIALOG_DATA) public data:startup, private router:Router, private route:ActivatedRoute,){
+    this.startup = data;
   }
   backtohome(){
     this.router.navigate(['/landing-page'])
   }
 
   ngOnInit() {
+    console.log(this.data)
     
    }
 

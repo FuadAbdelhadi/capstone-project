@@ -36,7 +36,7 @@
 </form>
 </div>
 <div #cards  class="card-container">
-  <div  *ngFor="let startup of startup ; let i = index" class="card-container"(click)="navitoinfo()" >
+  <div  *ngFor="let startup of startup ; let i = index" class="card-container"(click)="openDialog(startup)" >
     
     <mat-card class="example-card"  >
       <mat-card-header>

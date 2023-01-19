@@ -10,6 +10,7 @@ export interface startup {
     empNum: string,
     url: string,
     email: string
+    id?: string
 }
 
 
