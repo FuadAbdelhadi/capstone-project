@@ -100,6 +100,123 @@
     cursor: pointer;
 }
 .filterbtn:hover{
+    transition:all 0.5s 0s ease;
     background: black;
     color: white;
 }
+
+/* .buttoncontainer{
+    position: fixed;
+    right: 30px;
+    bottom: 100px;
+    border-radius: 50%;
+}
+
+.shareButton{
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.buttoncontainer > shareButton{
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: blue;
+    color: white;
+    transform: 0.2s;
+} */
+
+.fab{
+    position: fixed;
+    bottom: 100px;
+    right: 38px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background: black;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.fab:hover{
+    cursor: pointer;
+}
+
+.fab button{
+    background-color: inherit;
+    color: white;
+    transition: 0.4s;
+}
+.fab button:hover{
+    cursor: pointer;
+}
+
+.box{
+    position: fixed;
+    font-size: xx-large;
+    bottom: 95px;
+    right: 0px;
+    height: 0px;
+    transition-delay: 0.3s;
+    width: 90px;
+    transition: 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.item{
+    overflow: hidden;
+    border-radius: 50%;
+    transition: 0.4s ease-in;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item1{
+    transition-delay: 0.2s;
+    background: blue;
+    color: black;
+}
+
+
+
+.item2{
+    transition-delay: 0.2s;
+    background: linear-gradient(#FEDA75, #FA7E1E, #D62976, #962FBF, #4f5bd5);
+    color: white;
+}
+
+.item3{
+    transition-delay: 0.2s;
+    background: black;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.box-active{
+    height: 290px;
+}
+
+.hidden{
+    opacity: 0;
+    filter: blur(5px);
+    transition: all 1s;
+}
+
+.show{
+    opacity: 1;
+    filter: none;
+}
+

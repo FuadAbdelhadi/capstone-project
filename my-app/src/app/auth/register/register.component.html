@@ -28,6 +28,6 @@
         <mat-error *ngIf="confirmPassword?.hasError('minLength')"> minimum length is 8 characters</mat-error>
     </mat-form-field>
     <mat-error *ngIf="form.hasError('passwordDoesntMatch')">Confirm passowrd doesnt match the password</mat-error>
-    <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">register</button>
+    <button type="submit" id="register" [disabled]="!form.valid">register</button>
 </form>
 </div>

@@ -2,11 +2,11 @@
 
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 
-
-<div class="container">
+<div class="container hidden">
   <section class="firstSection">
     <h1>Lorem ipsum dolor sit amet consectetur adipisicing.</h1>
     <br>
@@ -19,24 +19,42 @@
     <!-- <input type="button" onClick="document.getElementById('cards').scrollIntoView();" /> -->
   </section>
 </div>
-<div class="filter">
+<div class="filter hidden">
   <form [formGroup]="form" (ngSubmit)="filter()">
-  <mat-form-field  >
-    <mat-label>Sector</mat-label>
-    <mat-select  formControlName="sectors">
-      <mat-option [value]="all">
-        all
-      </mat-option>
-      <mat-option [value]="sector.name" *ngFor="let sector of sectorsFilter" >
-        {{sector.name}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <button type="submit" class="filterbtn">Filter</button>
-</form>
+    <div>
+    <mat-form-field  >
+      <mat-label>Sector</mat-label>
+      <mat-select  formControlName="sectors">
+        <mat-option [value]="all">
+          all
+        </mat-option>
+        <mat-option [value]="sector.name" *ngFor="let sector of sectorsFilter" >
+          {{sector.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button type="submit" class="filterbtn hidden">Filter</button>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width hidden" appearance="fill">
+      <mat-label>Start up name</mat-label>
+      <input type="text"
+             placeholder="Pick one"
+             aria-label="Start up name"
+             matInput
+             [formControl]="myControl"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  </form>
 </div>
-<div #cards  class="card-container">
-  <div  *ngFor="let startup of startup ; let i = index" class="card-container"(click)="openDialog(startup)" >
+<div #cards  class="card-container hidden">
+  <div  *ngFor="let startup of startup ; let i = index" class="card-container"(click)="openDialog(startup, '300ms', '300ms')" >
     
     <mat-card class="example-card"  >
       <mat-card-header>
@@ -50,6 +68,20 @@
     </mat-card-content>
     </mat-card>
   </div>
+</div>
+<!-- <div class="buttoncontainer">
+  <button class="shareButton"> <i class="material-icons">add</i> </button>
+</div> -->
+
+<div class="fab hidden" [class.fab-active]="active==1">
+  <button (click)="isActive()"> <i class="material-icons">add</i> </button>
+</div>
+
+<div class="box hidden" [class.box-active]="active==1">
+  <a href="" class="item item1"><i class="fa fa-facebook-f"></i></a>
+  <a href="" class="item item2"><i class="fa fa-instagram"></i></a>
+  <a href="" class="item item3"><i class="fa fa-github"></i></a>
+  
 </div>
 
 <footer class="footer">

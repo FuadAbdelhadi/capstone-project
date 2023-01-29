@@ -1,4 +1,34 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
-<h1>hiiiiiiiiiiiiiii</h1>
 
-<h1>{{data.city}} and {{data.name}}</h1>
+<div class="container">
+    <div class="content">
+        <div>
+            <p id="name">{{data.name}}</p>
+            <p id="founder">{{data.founderName}}</p>
+            <p id="sectors">{{data.sectors}} sector</p>
+        </div>
+        <mat-tab-group  id="tabs">
+            <mat-tab label="Discription" > 
+                <p>{{data.discription}}</p>
+            </mat-tab>
+            <mat-tab label="More information">
+                <div class="info">
+                    <p> <i class="material-icons">email</i> {{data.email}}</p>
+                    <p> <i class="material-icons">map</i> City of origin {{data.city}}</p>
+                    <p type="date"> <i class="material-icons">event</i> Founded in {{data.year}}</p>
+                    <p> <i class="material-icons">groups</i> Number of employees {{data.empNum}}</p>
+                    <p href="https://github.com/FuadAbdelhadi" id="url"> <i class="material-icons">language</i> {{data.url}}</p>
+                    
+                    
+                </div>
+            </mat-tab>
+            
+          </mat-tab-group>
+    </div>
+    <div class="image">
+        <img class="outer-image" src="{{data.logo}}" alt="">
+        <img class="inner-image" src="{{data.logo}}" alt="">
+    </div>
+</div>

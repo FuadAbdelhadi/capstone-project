@@ -81,6 +81,7 @@ submit(){
     this.email?.value+'' ,
 
   )
+  this.data.addStartUpName(this.name?.value +'')
   this.router.navigate(['/landing-page'])
 }
 

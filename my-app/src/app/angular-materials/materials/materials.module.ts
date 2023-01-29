@@ -16,6 +16,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDialogModule, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 
@@ -39,6 +40,7 @@ const material = [
     MatPaginatorModule,
     MatTabsModule,
     MatDialogModule,
+    MatAutocompleteModule
     
 ]
 

@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import { startup } from 'src/app/end-user/startups';
+import { sector, startup } from 'src/app/end-user/startups';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataService } from '../services/data.service';
-import { Observable, Observer } from 'rxjs';
+import { FormControl, FormGroup } from '@angular/forms';
+import { map, Observable, Observer } from 'rxjs';
 import { approval } from '../approval';
 
 @Component({
@@ -28,6 +29,12 @@ export class AdminPageComponent implements OnInit{
   displayedColumns=['Name','City','Sector','year','empNum','url','email','discription'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement: startup | null | undefined;
+  startup:startup[]=[];
+  sectorsFilter? : sector[]
+  form = new FormGroup ({
+    sectors: new FormControl('')
+  })
+  all:string = 'all'
   
 
   constructor( private data:DataService ) { 
@@ -41,6 +48,10 @@ export class AdminPageComponent implements OnInit{
     this.data.getData(false).subscribe((value)=>{
       this.dataSourceNotApproved.data = value
     })
+    this.data.getSectors().subscribe((value)=>{
+      this.sectorsFilter = value
+      
+  })
   }
 
   toggleApproval(approve:startup){
@@ -48,9 +59,26 @@ export class AdminPageComponent implements OnInit{
     this.data.toggleAproval(approve.id+'', approve)
   }
 
-  delete(name:string){
-    this.data.Delete(name)
+  delete(id:string){
+    this.data.Delete(id)
   }
+
+  get sectors(){
+    return this.form.get("sectors")
+  }
+
+  filter(){
+    if(this.sectors?.value == this.all){
+      this.data.getData(true).subscribe((value)=>{
+        return this.dataSourceNotApproved.data = value
+      })
+
+    }else{
+      this.data.getData(true).pipe(
+       map((startups : startup[])=>{
+         return startups.filter((startup)=> startup.sectors.indexOf(this.sectors?.value+ '') != -1)
+      })).subscribe((startups)=> {this.dataSourceNotApproved.data = startups});
+    }}
 
 
   // applyFilter(event: Event) {

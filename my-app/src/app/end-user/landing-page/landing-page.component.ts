@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter, map, Observable, switchMap } from 'rxjs';
+import { filter, map, Observable, startWith } from 'rxjs';
 import { DataService } from 'src/app/admin/services/data.service';
-import { sector, startup } from '../startups';
+import { sector, startup, startUpName } from '../startups';
 import { MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { StartUpInfoComponent } from '../start-up-info/start-up-info.component';
 
@@ -13,13 +13,17 @@ import { StartUpInfoComponent } from '../start-up-info/start-up-info.component';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
+  startupByName!:string[];
+  myControl = new FormControl('');
+  options: string[] = this.startupByName;
+  filteredOptions?: Observable<string[]>;
   constructor(private router: Router,private data: DataService, private route:ActivatedRoute, public dialog: MatDialog) {
+    
     //image location
     this.image1 = "src\assets\images\image1.jpg"
   }
   @ViewChild('content', {static:false}) el!: ElementRef;
   startup:startup[]=[];
-  startupByName!: Observable<startup[] | unknown>
   startup$!: Observable<startup | undefined | unknown>;
   id!:string
   image1: string;
@@ -28,11 +32,36 @@ export class LandingPageComponent implements OnInit {
     sectors: new FormControl('')
   })
   all:string = 'all'
+  active:number = 0
 
  
   
   
   ngOnInit() {
+
+    // this.data.getData(true).pipe(
+    //   map((startups : startUpName[])=>{
+    //     return startups.filter((startup)=> startup.name)
+    //  })).subscribe((startups)=> {this.startupByName = startups});
+
+    // this.filteredOptions = this.myControl.valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this._filter(value || '')),
+    // );
+
+
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach((entry)=> {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show')
+        }else{
+          entry.target.classList.remove('show')
+        }
+      })
+    })
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el)=> observer.observe(el));
 
     this.data.getSectors().subscribe((value)=>{
       this.sectorsFilter = value
@@ -42,6 +71,20 @@ export class LandingPageComponent implements OnInit {
     this.data.getData(true).subscribe((value)=>{
       this.startup = value
     })
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  isActive(){
+    if(this.active === 0){
+      this.active = this.active+1
+    }else{
+      this.active = this.active-1
+    }
   }
 
   filter(){
@@ -69,25 +112,16 @@ export class LandingPageComponent implements OnInit {
     return this.form.get("sectors")
   }
   
-  navitoinfo(){
-
-    this.startup$ = this.route.paramMap.pipe(
-      switchMap((value)=>{
-        this.id = value.get('id')+''
-        return this.data.getDataById(this.id)
-      })
-    )
 
 
 
-
-    this.router.navigate(['/start-up-info', this.id])
-  }
-
-
-  openDialog(startup: startup) {
+  openDialog(startup: startup, enterAnimationDuration: string, exitAnimationDuration: string) {
   
     this.dialog.open(StartUpInfoComponent, {
+      enterAnimationDuration,
+      exitAnimationDuration,
+      width: '80vw',
+      height: '80vh',
       data: {
         ... startup
 

@@ -17,3 +17,7 @@ export interface startup {
 export interface sector {
     name:string
 }
+
+export interface startUpName{
+    name:string
+}
