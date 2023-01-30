@@ -21,28 +21,27 @@
 </div>
 <div class="filter hidden">
   <form [formGroup]="form" (ngSubmit)="filter()">
-    <div>
+    
     <mat-form-field  >
       <mat-label>Sector</mat-label>
       <mat-select  formControlName="sectors">
         <mat-option [value]="all">
           all
         </mat-option>
-        <mat-option [value]="sector.name" *ngFor="let sector of sectorsFilter" >
-          {{sector.name}}
+        <mat-option [value]="sector" *ngFor="let sector of sectorsFilter" >
+          {{sector}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button type="submit" class="filterbtn hidden">Filter</button>
-  </div>
-  <div>
-    <mat-form-field class="example-full-width hidden" appearance="fill">
+  
+  
+  <mat-form-field class="example-full-width hidden" appearance="fill">
       <mat-label>Start up name</mat-label>
       <input type="text"
-             placeholder="Pick one"
-             aria-label="Start up name"
-             matInput
-             [formControl]="myControl"
+      placeholder="Pick one"
+      aria-label="Start up name"
+      matInput
+      [formControl]="myControl"
              [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
@@ -50,7 +49,9 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-  </div>
+    
+    <button  class="filterbtn hidden">Filter</button>
+    <button (click)="search()">Search</button>
   </form>
 </div>
 <div #cards  class="card-container hidden">
@@ -60,11 +61,9 @@
       <mat-card-header>
         <mat-card-title>{{startup.name}}</mat-card-title>
       </mat-card-header>
+      <mat-card-content>
       <img mat-card-image src="{{startup.logo}}" alt="Photo of {{startup.name}} logo">
-    <mat-card-content>
-      <p>
-        {{startup.discription}}
-      </p>
+      
     </mat-card-content>
     </mat-card>
   </div>

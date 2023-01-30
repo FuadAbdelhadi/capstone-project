@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { filter, map, Observable, startWith } from 'rxjs';
+import { map, Observable, startWith } from 'rxjs';
 import { DataService } from 'src/app/admin/services/data.service';
-import { sector, startup, startUpName } from '../startups';
-import { MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { startup } from '../startups';
+import { MatDialog} from '@angular/material/dialog';
 import { StartUpInfoComponent } from '../start-up-info/start-up-info.component';
 
 @Component({
@@ -15,9 +14,9 @@ import { StartUpInfoComponent } from '../start-up-info/start-up-info.component';
 export class LandingPageComponent implements OnInit {
   startupByName!:string[];
   myControl = new FormControl('');
-  options: string[] = this.startupByName;
+  options!: string[];
   filteredOptions?: Observable<string[]>;
-  constructor(private router: Router,private data: DataService, private route:ActivatedRoute, public dialog: MatDialog) {
+  constructor(private data: DataService, public dialog: MatDialog) {
     
     //image location
     this.image1 = "src\assets\images\image1.jpg"
@@ -27,9 +26,10 @@ export class LandingPageComponent implements OnInit {
   startup$!: Observable<startup | undefined | unknown>;
   id!:string
   image1: string;
-  sectorsFilter? : sector[]
+  sectorsFilter? : string[]
   form = new FormGroup ({
     sectors: new FormControl('')
+
   })
   all:string = 'all'
   active:number = 0
@@ -39,16 +39,9 @@ export class LandingPageComponent implements OnInit {
   
   ngOnInit() {
 
-    // this.data.getData(true).pipe(
-    //   map((startups : startUpName[])=>{
-    //     return startups.filter((startup)=> startup.name)
-    //  })).subscribe((startups)=> {this.startupByName = startups});
+   
 
-    // this.filteredOptions = this.myControl.valueChanges.pipe(
-    //   startWith(''),
-    //   map(value => this._filter(value || '')),
-    // );
-
+    
 
     const observer = new IntersectionObserver((entries)=>{
       entries.forEach((entry)=> {
@@ -63,13 +56,19 @@ export class LandingPageComponent implements OnInit {
     const hiddenElements = document.querySelectorAll('.hidden');
     hiddenElements.forEach((el)=> observer.observe(el));
 
-    this.data.getSectors().subscribe((value)=>{
-      this.sectorsFilter = value
-      
-  })
+  
   
     this.data.getData(true).subscribe((value)=>{
-      this.startup = value
+      this.startup = value;
+      this.options = value.map((startup)=> startup.name);
+      this.sectorsFilter = value.map((startup)=> startup.sectors);
+      console.log(this.startupByName);
+
+      this.filteredOptions = this.myControl.valueChanges.pipe(
+        startWith(''),
+        map(value => this._filter(value || '')),
+      );
+  
     })
   }
 
@@ -99,17 +98,31 @@ export class LandingPageComponent implements OnInit {
          return startups.filter((startup)=> startup.sectors.indexOf(this.sectors?.value+ '') != -1)
       })).subscribe((startups)=> {this.startup = startups});
     }
-
+  }
   
+  search(){
+    
+
+      this.startup = this.startup.filter((el)=>{
+        return el.name == this.name?.value+''
+      })
+      console.log(this.startup)
 
 
-   
-
-   //you don't update data on filter 
+      // this.data.getData(true).pipe(
+      //   map((startups : startup[])=>{
+      //     return startups.filter((startup)=> startup.name.indexOf(this.name?.value+ '') != -1)
+      //  })).subscribe((startups)=> {this.startup = startups});
+     
+    
   }
   
   get sectors(){
     return this.form.get("sectors")
+  }
+
+  get name(){
+    return this.form.get("myControl")
   }
   
 
@@ -120,8 +133,8 @@ export class LandingPageComponent implements OnInit {
     this.dialog.open(StartUpInfoComponent, {
       enterAnimationDuration,
       exitAnimationDuration,
-      width: '80vw',
-      height: '80vh',
+      width: '60vw',
+      height: '60vh',
       data: {
         ... startup
 

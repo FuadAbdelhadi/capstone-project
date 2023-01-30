@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './auth/services/auth.service';
-
+import { companies } from 'src/companies';
+import { DataService } from './admin/services/data.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,7 +13,7 @@ export class AppComponent implements OnInit {
   admin?: boolean = false;
   userstate$= this.auth.userstate$
   
-  constructor(private router: Router, public auth:AuthService) {
+  constructor(private router: Router, public auth:AuthService, public dataService: DataService) {
        
     
   }
@@ -40,5 +41,7 @@ export class AppComponent implements OnInit {
       this.router.navigate(['/auth/login'])
     })
   }
+
+  
 
 }

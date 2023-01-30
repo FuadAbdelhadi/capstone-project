@@ -24,7 +24,7 @@ export class DataService {
 
   Delete(id:string){
     console.log(id)
-    this.fireStore.collection<startup>('users').doc(id).delete()
+    this.fireStore.collection<startup>('start-ups').doc(id).delete()
  }
 
   addData(_approved:boolean, name:string, logo:string, Discription:string, City:string, Sectors:string, Founder:string, Year:string, employees:string, URL:string, email:string ){
@@ -59,6 +59,15 @@ export class DataService {
 
   getSectorByName(name:string){
     return this.fireStore.collection<sector>('sectors', ref => ref.where('name', '==', name)).valueChanges()
+  }
+
+  getStartupByname(name:string){
+    return this.fireStore.collection<sector>('sectors', ref => ref.where('name', '==', name)).valueChanges()
+  }
+
+  addSectors(name:string){
+    let Sector = {name :name}
+    return this.fireStore.collection<sector>('sectors').add(Sector)
   }
 
 }

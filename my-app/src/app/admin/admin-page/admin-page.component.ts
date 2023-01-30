@@ -59,7 +59,7 @@ export class AdminPageComponent implements OnInit{
     this.data.toggleAproval(approve.id+'', approve)
   }
 
-  delete(id:string){
+  deleteFn(id:string){
     this.data.Delete(id)
   }
 

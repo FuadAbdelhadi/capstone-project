@@ -5,30 +5,23 @@
 <div class="container">
     <div class="content">
         <div>
-            <p id="name">{{data.name}}</p>
-            <p id="founder">{{data.founderName}}</p>
-            <p id="sectors">{{data.sectors}} sector</p>
+            <p id="name" class="cursor">{{data.name}}</p>
+            <p id="founder" class="cursor">{{data.founderName}}</p>
+            <p id="sectors" class="cursor">{{data.sectors}}</p>
         </div>
-        <mat-tab-group  id="tabs">
-            <mat-tab label="Discription" > 
-                <p>{{data.discription}}</p>
-            </mat-tab>
-            <mat-tab label="More information">
-                <div class="info">
-                    <p> <i class="material-icons">email</i> {{data.email}}</p>
-                    <p> <i class="material-icons">map</i> City of origin {{data.city}}</p>
-                    <p type="date"> <i class="material-icons">event</i> Founded in {{data.year}}</p>
-                    <p> <i class="material-icons">groups</i> Number of employees {{data.empNum}}</p>
-                    <p href="https://github.com/FuadAbdelhadi" id="url"> <i class="material-icons">language</i> {{data.url}}</p>
-                    
-                    
-                </div>
-            </mat-tab>
+        
+        <div class="info">
+            <p class="cursor"> <i class="material-icons cursor">email</i> {{data.email}}</p>
+            <p class="cursor"> <i class="material-icons cursor">map</i> City of origin {{data.city}}</p>
+            <p type="date" class="cursor"> <i class="material-icons cursor">event</i> Founded in {{data.year}}</p>
+            <p class="cursor"> <i class="material-icons cursor">groups</i> Number of employees {{data.empNum}}</p>
+            <p id="url" class="cursor"> <i class="material-icons cursor">language</i> {{data.url}}</p>
             
-          </mat-tab-group>
+            
+        </div>
     </div>
     <div class="image">
-        <img class="outer-image" src="{{data.logo}}" alt="">
+        
         <img class="inner-image" src="{{data.logo}}" alt="">
     </div>
 </div>
