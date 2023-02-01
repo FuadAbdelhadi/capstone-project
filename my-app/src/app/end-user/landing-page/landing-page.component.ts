@@ -152,44 +152,8 @@ export class LandingPageComponent implements OnInit {
   }
 
 
-
-
-  // makePDF(){
-  //   let pdf = new jsPDF('p','pt', 'a4');
-  //   pdf.html(this.el.nativeElement,{
-  //     callback: (pdf)=>{
-  //       pdf.save("demo.pdf")
-  //     }
-  //   })
-  // }
-  
-  
-  
-  
-
-  // this.CompService.navitoinfo(id:number){
-  //   this.startups.forEach(value =>{
-  //     if(value.id){
-  //       this.router.navigate(['/start-uo-info/'+value])
-  //     }
-  //   })
-
-  
-    
   }
 
   
-//   share(){
-//     if(navigator.share){
-//       navigator.share({
-//         title:'share',
-//         url:'https://github.com/FuadAbdelhadi'
-//       }).then(()=>{
-//         console.log('thanks for sharing')
-//       })
-//       .catch(console.error)
-//     }
-//   }
-// }
 
 
