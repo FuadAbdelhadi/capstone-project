@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/admin/services/data.service';
+import { UploadService } from 'src/app/upload.service';
 import { sector } from '../startups';
 
 @Component({
@@ -12,7 +13,6 @@ import { sector } from '../startups';
 export class RequestComponent implements OnInit{
 form= new FormGroup({
   name: new FormControl('', [Validators.required]),
-  logo: new FormControl('', [Validators.required]),
   Discription: new FormControl('', [Validators.required]),
   City: new FormControl('', [Validators.required]),
   Sectors: new FormControl('', [Validators.required]),
@@ -20,25 +20,34 @@ form= new FormGroup({
   Year: new FormControl('', [Validators.required]),
   employees: new FormControl('', [Validators.required, Validators.min(0)]),
   URL: new FormControl('', [Validators.required]),
-  email: new FormControl('', [Validators.required, Validators.email])
+  email: new FormControl('', [Validators.required, Validators.email]),
+  
 })
 sectorsFilter? : sector[]
+downLoadURL?:string
 
-constructor(private data:DataService, private router:Router){}
+constructor(private data:DataService,public storage: UploadService, private router:Router){}
   ngOnInit(): void {
     this.data.getSectors().subscribe((value)=>{
       this.sectorsFilter = value
-      console.log(value)
+      
   })}
+
+  upload(event: Event){
+    let file = (event.target as HTMLInputElement)?.files?.[0];
+    if(file){
+      this.storage.uploadFile(file).subscribe((value)=>{
+        this.downLoadURL = value
+      })
+    }
+  }
 
 
 
 get name(){
   return this.form.get("name")
 }
-get logo(){
-  return this.form.get("logo")
-}
+
 get Discription(){
   return this.form.get("Discription")
 }
@@ -70,8 +79,7 @@ submit(){
   this.data.addData(
     this.approved,
     this.name?.value+'',
-    this.logo?.value+'',
-    this.Discription?.value+'',
+    this.downLoadURL+'',
     this.City?.value+'',
     this.Sectors?.value+'',
     this.Founder?.value+'',
@@ -81,9 +89,11 @@ submit(){
     this.email?.value+'' ,
 
   )
-  this.data.addStartUpName(this.name?.value +'')
+  
   this.router.navigate(['/landing-page'])
 }
+
+
 
 
 

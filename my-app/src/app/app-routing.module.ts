@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminPageComponent } from './admin/admin-page/admin-page.component';
 import { UsersListComponent } from './admin/users-list/users-list.component';
+import { AboutComponent } from './end-user/about/about.component';
 import { LandingPageComponent } from './end-user/landing-page/landing-page.component';
 import { RequestComponent } from './end-user/request/request.component';
 import { StartUpInfoComponent } from './end-user/start-up-info/start-up-info.component';
@@ -13,7 +14,9 @@ const routes: Routes = [
 {path: 'start-up-info/:id', component:StartUpInfoComponent},
 {path:'admin-page', component:AdminPageComponent},
 {path:'auth', loadChildren: ()=> import('./auth/auth.module').then((m)=> m.AuthModule)},
-{path:'users-list', component:UsersListComponent}];
+{path:'users-list', component:UsersListComponent},
+{path:'about', component:AboutComponent}];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

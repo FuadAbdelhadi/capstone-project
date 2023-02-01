@@ -27,7 +27,7 @@ export class DataService {
     this.fireStore.collection<startup>('start-ups').doc(id).delete()
  }
 
-  addData(_approved:boolean, name:string, logo:string, Discription:string, City:string, Sectors:string, Founder:string, Year:string, employees:string, URL:string, email:string ){
+  addData(_approved:boolean, name:string, logo:string, City:string, Sectors:string, Founder:string, Year:string, employees:string, URL:string, email:string ){
    
     
 
@@ -35,7 +35,6 @@ export class DataService {
       approved : false,
       name : name,
       logo:logo,
-      discription:Discription ,
       city:City,
       sectors:Sectors,
       founderName:Founder,

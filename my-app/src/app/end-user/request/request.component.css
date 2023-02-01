@@ -51,3 +51,15 @@ button{
     background: white;
     color: black;
 }
+
+.imgbtn{
+    background-color: white;
+    margin-right: 25px;
+}
+
+
+.new-image{
+    max-width: 250px;
+    max-height: 250px;
+    margin-top: 50px;
+}

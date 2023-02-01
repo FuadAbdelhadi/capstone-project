@@ -28,6 +28,7 @@ import { UsersListComponent } from './admin/users-list/users-list.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MaterialsModule } from './angular-materials/materials/materials.module';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AboutComponent } from './end-user/about/about.component';
 
 
 
@@ -39,7 +40,8 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     StartUpInfoComponent,
     RequestComponent,
     AdminPageComponent,
-    UsersListComponent
+    UsersListComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

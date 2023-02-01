@@ -2,7 +2,6 @@ export interface startup {
    approved:boolean,
     name: string,
     logo: string,
-    discription:string,
     city: string,
     sectors: string,
     founderName: string,

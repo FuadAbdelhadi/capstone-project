@@ -1,3 +1,14 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.main-container {
+  flex: 1;
+}
+
+
+
 .header{
     display: flex;
     justify-content: space-between;
@@ -75,4 +86,5 @@ span{
   background: white;
   color: black;
 }
+
 

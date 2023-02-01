@@ -5,6 +5,7 @@ import { DataService } from 'src/app/admin/services/data.service';
 import { startup } from '../startups';
 import { MatDialog} from '@angular/material/dialog';
 import { StartUpInfoComponent } from '../start-up-info/start-up-info.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
@@ -16,7 +17,7 @@ export class LandingPageComponent implements OnInit {
   myControl = new FormControl('');
   options!: string[];
   filteredOptions?: Observable<string[]>;
-  constructor(private data: DataService, public dialog: MatDialog) {
+  constructor(private data: DataService, public dialog: MatDialog, private router:Router) {
     
     //image location
     this.image1 = "src\assets\images\image1.jpg"
@@ -87,6 +88,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   filter(){
+    console.log('applying sector filter');
     if(this.sectors?.value == this.all){
       this.data.getData(true).subscribe((value)=>{
         return this.startup = value
@@ -102,11 +104,14 @@ export class LandingPageComponent implements OnInit {
   
   search(){
     
+    console.log(this.name);
+    console.log(this.startup);
 
+    
       this.startup = this.startup.filter((el)=>{
         return el.name == this.name?.value+''
       })
-      console.log(this.startup)
+      
 
 
       // this.data.getData(true).pipe(
@@ -122,7 +127,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   get name(){
-    return this.form.get("myControl")
+    return this.myControl
   }
   
 
@@ -140,6 +145,10 @@ export class LandingPageComponent implements OnInit {
 
       },
     });
+  }
+
+  about(){
+    this.router.navigate(['/about'])
   }
 
 

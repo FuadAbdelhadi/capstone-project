@@ -88,3 +88,14 @@ table {
     background: black;
     color: white;
 }
+
+.hidden{
+  opacity: 0;
+  filter: blur(5px);
+  transition: all 10s;
+}
+
+.show{
+  opacity: 1;
+  filter: none;
+}

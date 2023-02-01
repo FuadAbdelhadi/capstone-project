@@ -7,19 +7,7 @@
         <mat-error *ngIf="name?.hasError('required')"> Name is required</mat-error>
     </mat-form-field>
 
-    <mat-form-field>
-        <mat-label>logo URL</mat-label>
-        <input matInput type="text" formControlName="logo">
-        <mat-error *ngIf="logo?.hasError('required')"> URL is required</mat-error>
-    </mat-form-field>
-    
-
-    <mat-form-field>
-        <mat-label>Discription</mat-label>
-        <input matInput type="text" formControlName="Discription">
-        <mat-error *ngIf="Discription?.hasError('required')">A discription is required</mat-error>       
-    </mat-form-field>
-
+ 
     <mat-form-field>
         <mat-label>City name</mat-label>
         <input matInput type="text" formControlName="City">
@@ -35,13 +23,6 @@
         </mat-select>
       </mat-form-field>
 
-
-      <!-- revisit when you add a service -->
-    <!-- <mat-form-field>
-        <mat-label>Sectors</mat-label>
-        <input matInput type="text" formControlName="Sectors">
-        <mat-error *ngIf="Sectors?.hasError('required')"> name is required</mat-error>
-    </mat-form-field> -->
 
     <mat-form-field>
         <mat-label>Founder Name</mat-label>
@@ -72,7 +53,10 @@
         <input matInput type="text" formControlName="email">
         <mat-error *ngIf="email?.hasError('required')"> e-mail is required</mat-error>
     </mat-form-field>
+    <input class="imgbtn" type="file" accept="image/*" value="select an image" (change)="upload($event)" >
+    <img  class="new-image" [src]="downLoadURL" *ngIf="downLoadURL" alt="">
     <button type="submit" id="submit" [disabled]="!form.valid">submit</button>
+    
 </form>
 </div>
 

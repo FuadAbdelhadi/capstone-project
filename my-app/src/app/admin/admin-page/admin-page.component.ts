@@ -42,6 +42,7 @@ export class AdminPageComponent implements OnInit{
   }
   
   ngOnInit(): void {
+    
     this.data.getData(true).subscribe((value)=>{
       this.dataSourceApproved.data = value
     })
@@ -72,12 +73,19 @@ export class AdminPageComponent implements OnInit{
       this.data.getData(true).subscribe((value)=>{
         return this.dataSourceNotApproved.data = value
       })
+      this.data.getData(true).subscribe((value)=>{
+        return this.dataSourceApproved.data = value
+      })
 
     }else{
       this.data.getData(true).pipe(
        map((startups : startup[])=>{
          return startups.filter((startup)=> startup.sectors.indexOf(this.sectors?.value+ '') != -1)
       })).subscribe((startups)=> {this.dataSourceNotApproved.data = startups});
+      this.data.getData(true).pipe(
+        map((startups : startup[])=>{
+          return startups.filter((startup)=> startup.sectors.indexOf(this.sectors?.value+ '') != -1)
+       })).subscribe((startups)=> {this.dataSourceApproved.data = startups});
     }}
 
 

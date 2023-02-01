@@ -8,16 +8,16 @@
 
 <div class="container hidden">
   <section class="firstSection">
-    <h1>Lorem ipsum dolor sit amet consectetur adipisicing.</h1>
+    <h1>Fueling the Next Generation of Innovation</h1>
     <br>
     <p >
-      One morning, when gregor samsa woke from troubled dreams, he foound
-      himself transformed in his bed into a horrible vermin.
+      Empowering Entrepreneurs and Startups to Achieve Their Dreams
     </p>
-    <p >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto suscipit voluptatem cupiditate, magni sint expedita illum ab quas soluta a quibusdam ad tenetur et dolorum?</p>
+    <p >Our platform is dedicated to showcasing and supporting the brightest startups in the industry. We provide a space for entrepreneurs to showcase their ideas, connect with potential investors and partners, and launch their businesses to new heights. Join us on this exciting journey to the future of innovation.</p>
     <br>
     <!-- <input type="button" onClick="document.getElementById('cards').scrollIntoView();" /> -->
   </section>
+  <button class="aboutbtn" (click)="about()">About us</button>
 </div>
 <div class="filter hidden">
   <form [formGroup]="form" (ngSubmit)="filter()">
@@ -35,7 +35,14 @@
     </mat-form-field>
   
   
-  <mat-form-field class="example-full-width hidden" appearance="fill">
+  
+    
+    <button  class="filterbtn hidden">Filter</button>
+    
+  </form>
+  <form >
+    <button (click)="search()" class="filterbtn">Search</button>
+    <mat-form-field class="example-full-width hidden" appearance="fill">
       <mat-label>Start up name</mat-label>
       <input type="text"
       placeholder="Pick one"
@@ -49,11 +56,9 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    
-    <button  class="filterbtn hidden">Filter</button>
-    <button (click)="search()">Search</button>
   </form>
 </div>
+
 <div #cards  class="card-container hidden">
   <div  *ngFor="let startup of startup ; let i = index" class="card-container"(click)="openDialog(startup, '300ms', '300ms')" >
     
@@ -73,13 +78,13 @@
 </div> -->
 
 <div class="fab hidden" [class.fab-active]="active==1">
-  <button (click)="isActive()"> <i class="material-icons">add</i> </button>
+  <button class="plusbtn" (click)="isActive()"> <i class="material-icons">add</i> </button>
 </div>
 
 <div class="box hidden" [class.box-active]="active==1">
-  <a href="" class="item item1"><i class="fa fa-facebook-f"></i></a>
-  <a href="" class="item item2"><i class="fa fa-instagram"></i></a>
-  <a href="" class="item item3"><i class="fa fa-github"></i></a>
+  <a href="https://github.com/FuadAbdelhadi" class="item item1"><i class="fa fa-facebook-f"></i></a>
+  <a href="https://github.com/FuadAbdelhadi" class="item item2"><i class="fa fa-instagram"></i></a>
+  <a href="https://github.com/FuadAbdelhadi" class="item item3"><i class="fa fa-github"></i></a>
   
 </div>
 
