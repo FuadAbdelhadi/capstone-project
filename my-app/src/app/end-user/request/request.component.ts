@@ -13,7 +13,6 @@ import { sector } from '../startups';
 export class RequestComponent implements OnInit{
 form= new FormGroup({
   name: new FormControl('', [Validators.required]),
-  Discription: new FormControl('', [Validators.required]),
   City: new FormControl('', [Validators.required]),
   Sectors: new FormControl('', [Validators.required]),
   Founder: new FormControl('', [Validators.required]),
@@ -48,9 +47,7 @@ get name(){
   return this.form.get("name")
 }
 
-get Discription(){
-  return this.form.get("Discription")
-}
+
 get City(){
   return this.form.get("City")
 }
