@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
 
+Jo startup’s is an online platform where user can look up and find active startups in Jordan.
+It provides an easy way for users to find startups from any sector a user is interested in.
+It provides a responsive beautiful, easy to use web design layout to make it more interesting and accessible.
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
